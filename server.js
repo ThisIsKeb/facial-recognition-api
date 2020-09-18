@@ -45,7 +45,7 @@ const app = express();
 //Middleware that parses the JSON body into JS that we can read
 app.use(express.json());
 //Using cors
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => { res.send('it is working') })
 

@@ -12,7 +12,8 @@ var whitelist = [
 'https://immense-fjord-12656.herokuapp.com/imageurl', 
 'https://immense-fjord-12656.herokuapp.com/image',
 'https://immense-fjord-12656.herokuapp.com/register',
-'https://immense-fjord-12656.herokuapp.com/signin'
+'https://immense-fjord-12656.herokuapp.com/signin',
+'https://kevins-facial-recognition-app.herokuapp.com'
 ]
 var corsOptions = {
   origin: function (origin, callback) {

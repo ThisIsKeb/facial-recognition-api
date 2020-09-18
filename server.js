@@ -25,8 +25,6 @@ var corsOptions = {
   }
 }
 
-app.options('*', cors())
-
 //process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 const db = knex({
@@ -44,6 +42,7 @@ const db = knex({
 
 const app = express();
 
+app.options('*', cors());
 //Middleware that parses the JSON body into JS that we can read
 app.use(express.json());
 //Using cors

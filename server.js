@@ -52,10 +52,10 @@ app.use(cors(corsOptions));
 app.get('/', (req, res) => { res.send('it is working') })
 
 // Sign-In also includes a more advanced function/call
-app.post('/signin', (req, res) => {signin.handleSignIn(db, bcrypt)})
+app.post('/signin', cors(corsOptions), (req, res) => {signin.handleSignIn(db, bcrypt)})
 
 // Register
-app.post('/register', cors(corsOptions), (req, res) => { register.handleRegister(req, res, db, bcrypt)})
+app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt)})
 
 //Getting the users homepage
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})

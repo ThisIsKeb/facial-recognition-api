@@ -24,20 +24,13 @@ if (!email || !name || !password) {
 			res.json(user[0]);
 		})
 		.catch(err => {
-			//res.status(400).json('unable to register');
-			res.status(400).json(err);
-			console.log(err);
-			console.log('insert error');
+			res.status(400).json('unable to register');
 		})
 	  })
 	.then(trx.commit)
 	.catch(trx.rollback)	
 	})
-	//.catch(err => res.status(400).json('unable to register'))
-	.catch(err => {
-	res.status(400).json(err);
-	console.log('transaction error');
-	console.log(err);
+	.catch(err => res.status(400).json('unable to register'))
 	})
 }
 

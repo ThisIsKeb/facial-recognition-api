@@ -25,7 +25,7 @@ if (!email || !name || !password) {
 		})
 		.catch(err => {
 			//res.status(400).json('unable to register');
-			res.status(400);
+			res.status(400).json(err);
 			console.log(err);
 			console.log('insert error');
 		})
@@ -35,7 +35,7 @@ if (!email || !name || !password) {
 	})
 	//.catch(err => res.status(400).json('unable to register'))
 	.catch(err => {
-	res.status(400);
+	res.status(400).json(err);
 	console.log('transaction error');
 	console.log(err);
 	})

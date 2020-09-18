@@ -1,5 +1,5 @@
 const handleSignIn = (db, bcrypt) => (req, res) => {
-	const {email, password } = req.body;
+	const { email, password } = req.body;
 	if (!email || !password) {
 	return res.status(400).json('incorrect form submission')
 }
@@ -16,10 +16,16 @@ const handleSignIn = (db, bcrypt) => (req, res) => {
 				res.json(user[0])
 			})
 			.catch(err => {
-				res.status(400).json('unable to get user');
+				//res.status(400).json('unable to get user');
+			res.status(400).json(err);
+			//console.log(err);
+			//console.log('transaction error');
 			})
 		} else {
-			res.status(400).json('Wrong credintials, please try again');
+			//res.status(400).json('Wrong credintials, please try again');
+			res.status(400).json(err);
+			//console.log(err);
+			//console.log('transaction error');
 		}
 	})
 	.catch(err => res.status(400).json('Wrong credintials, please try again'))

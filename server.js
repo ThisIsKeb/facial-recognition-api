@@ -8,6 +8,22 @@ const signin = require('./controllers/signin');
 const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
+var whitelist = [
+'https://immense-fjord-12656.herokuapp.com/imageurl', 
+'https://immense-fjord-12656.herokuapp.com/image',
+'https://immense-fjord-12656.herokuapp.com/register',
+'https://immense-fjord-12656.herokuapp.com/signin'
+]
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = 0;
 
 const db = knex({
@@ -36,7 +52,7 @@ app.get('/', (req, res) => { res.send('it is working') })
 app.post('/signin', (req, res) => {signin.handleSignIn(db, bcrypt)})
 
 // Register
-app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt)})
+app.post('/register', cors(corsOptions), (req, res) => { register.handleRegister(req, res, db, bcrypt)})
 
 //Getting the users homepage
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db)})

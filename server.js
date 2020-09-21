@@ -53,7 +53,7 @@ app.use(cors());
 app.get('/', (req, res) => { res.send('it is working') })
 
 // Sign-In also includes a more advanced function/call
-app.post('/signin', cors(), (req, res) => {signin.handleSignIn(db, bcrypt)})
+app.post('/signin', (req, res) => {signin.handleSignIn(db, bcrypt)})
 
 // Register
 app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcrypt)})

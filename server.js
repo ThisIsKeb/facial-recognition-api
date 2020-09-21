@@ -48,7 +48,7 @@ app.use(express.json());
 
 //Using cors
 app.use(cors());
-app.options('*', cors());
+//app.options('*', cors());
 
 app.get('/', (req, res) => { res.send('it is working') })
 

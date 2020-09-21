@@ -43,12 +43,12 @@ const db = knex({
 
 const app = express();
 
-
-app.options('*', cors());
 //Middleware that parses the JSON body into JS that we can read
 app.use(express.json());
+
 //Using cors
 app.use(cors());
+app.options('*', cors());
 
 app.get('/', (req, res) => { res.send('it is working') })
 
